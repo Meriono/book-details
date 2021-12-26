@@ -11,6 +11,8 @@ import java.util.Map;
 @Component
 public class GraphQLDataFetchers {
 
+    //TODO: hämta nedan information från en databas istället
+
     private static List<Map<String, String>> books = Arrays.asList(
             ImmutableMap.of("id", "book-1",
                     "name", "Harry Potter and the Philosopher's Stone",
