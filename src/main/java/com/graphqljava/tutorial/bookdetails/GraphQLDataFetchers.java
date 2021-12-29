@@ -63,6 +63,7 @@ public class GraphQLDataFetchers {
         };
     }
 // Om Map skulle vara "totalPages" istället för "pageCount" som i schemat behövs nedanstående för att hämta ut korrekt data.
+//
 //    public graphql.schema.DataFetcher getPageCountDataFetcher() {
 //        return dataFetchingEnvironment -> {
 //            Map<String,String> book = dataFetchingEnvironment.getSource();
