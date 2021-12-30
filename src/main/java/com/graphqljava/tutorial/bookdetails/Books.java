@@ -10,16 +10,13 @@ public class Books {
     private Integer id;
     private String book_name;
     private Integer page_count;
+    private Integer author_id;
 
-    @OneToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
-    private Authors authors;
-
-    public Books(Integer id, String book_name, Integer page_count, Authors author) {
+    public Books(Integer id, String book_name, Integer page_count, Integer author) {
         this.id = id;
         this.book_name = book_name;
         this.page_count = page_count;
-        this.authors = author;
+        this.author_id = author;
     }
 
     public Books() {
@@ -50,11 +47,11 @@ public class Books {
         this.page_count = page_count;
     }
 
-    public Authors getAuthors() {
-        return authors;
+    public Integer getAuthor_id() {
+        return author_id;
     }
 
-    public void setAuthors(Authors author) {
-        this.authors = author;
+    public void setAuthor_id(Integer author) {
+        this.author_id = author;
     }
 }
