@@ -4,13 +4,13 @@ type Query {
 
 type Book {
   id: ID
-  name: String
-  pageCount: Int
-  author: Author
+  book_name: String
+  page_count: Int
+  authors: Authors
 }
 
-type Author {
+type Authors {
   id: ID
-  firstName: String
-  lastName: String
+  firstname: String
+  lastname: String
 }

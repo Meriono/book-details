@@ -13,11 +13,19 @@ public class ControllerTestingDB {
     @Autowired
     private bookService bookService;
 
+    @Autowired
+    private authorService authorService;
+
 
 
     @GetMapping(path = "/all")
     public @ResponseBody Iterable<Books> getAllBooks(){
         return bookService.getAll();
+    }
+
+    @GetMapping(path = "/all/a")
+    public @ResponseBody Iterable<Authors> getAllAuthors(){
+        return authorService.getAll();
     }
 
     @GetMapping(path = "/testing")
