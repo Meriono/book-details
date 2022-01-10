@@ -24,7 +24,7 @@ public class ControllerTestingDB {
     private authorService authorService;
 
     @Autowired
-    GraphQLDataFetchers graphQLDataFetchers;
+    GraphQLProvider graphQLProvider;
 
     @GetMapping(path = "/all")
     public @ResponseBody Iterable<Books> getAllBooks(){
@@ -39,9 +39,9 @@ public class ControllerTestingDB {
         return authorService.getAll();
     }
 
-    @GetMapping(path = "/testing/{id}")
+    @GetMapping(path = "/testing")
     public @ResponseBody String getTest(@PathParam("id") Integer id){
-        graphQLDataFetchers.printGraphQL(id);
+        graphQLProvider.printGraphQL(id);
         return "hello";
     }
 }

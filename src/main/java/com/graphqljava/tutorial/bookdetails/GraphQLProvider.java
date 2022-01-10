@@ -2,6 +2,7 @@ package com.graphqljava.tutorial.bookdetails;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+import graphql.ExecutionResult;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
@@ -50,6 +51,12 @@ public class GraphQLProvider {
 //                        .dataFetcher("pageCount", graphQLDataFetchers.getPageCountDataFetcher())
                 )
                 .build();
+    }
+
+    public void printGraphQL(Integer id) {
+        ExecutionResult executionResult = graphQL.execute("{bookById(id:"+id+"){book_name author{firstname}}}");
+
+        System.out.println(executionResult.getData().toString());
     }
 
     @Bean
