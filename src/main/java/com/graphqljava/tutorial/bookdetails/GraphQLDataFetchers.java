@@ -2,6 +2,10 @@ package com.graphqljava.tutorial.bookdetails;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.graphqljava.tutorial.bookdetails.services.authorService;
+import com.graphqljava.tutorial.bookdetails.services.bookService;
+import com.graphqljava.tutorial.bookdetails.testdb.Authors;
+import com.graphqljava.tutorial.bookdetails.testdb.Books;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import graphql.schema.DataFetcher;

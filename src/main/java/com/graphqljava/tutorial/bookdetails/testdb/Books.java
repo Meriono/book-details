@@ -1,4 +1,4 @@
-package com.graphqljava.tutorial.bookdetails;
+package com.graphqljava.tutorial.bookdetails.testdb;
 
 import javax.persistence.*;
 

@@ -1,5 +1,6 @@
-package com.graphqljava.tutorial.bookdetails;
+package com.graphqljava.tutorial.bookdetails.services;
 
+import com.graphqljava.tutorial.bookdetails.testdb.Books;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class bookService {
 
     @Autowired
-    private booksRepo booksRepo;
+    private com.graphqljava.tutorial.bookdetails.repos.booksRepo booksRepo;
 
     public Iterable<Books> getAll(){ return  booksRepo.findAll();}
 }
