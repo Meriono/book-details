@@ -1,0 +1,16 @@
+type Query {
+  arbetsorderByObj(obj: OBJEKT): Book
+}
+
+type Fu {
+  fuObjnr: OBJEKT
+  fuStatus: String
+  fuRegdat: String
+  fuResursext: String
+  Antal: Int
+  Eh: EH
+}
+
+type Eh {
+  ehObjnr: OBJEKT
+}
