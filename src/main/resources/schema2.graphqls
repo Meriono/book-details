@@ -8,9 +8,4 @@ type Fu {
   fuRegdat: String
   fuResursext: String
   Antal: Int
-  Eh: EH
-}
-
-type Eh {
-  ehObjnr: OBJEKT
 }

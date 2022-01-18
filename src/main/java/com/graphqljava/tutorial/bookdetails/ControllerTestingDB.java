@@ -2,6 +2,7 @@ package com.graphqljava.tutorial.bookdetails;
 
 import com.google.gson.Gson;
 import com.graphqljava.tutorial.bookdetails.f2db.Fu;
+import com.graphqljava.tutorial.bookdetails.f2db.FuDTO;
 import com.graphqljava.tutorial.bookdetails.services.fuService;
 import com.graphqljava.tutorial.bookdetails.testdb.Authors;
 import com.graphqljava.tutorial.bookdetails.testdb.Books;
@@ -44,10 +45,15 @@ public class ControllerTestingDB {
 
 
     @GetMapping(path = "/fu/all")
-    public @ResponseBody String getAllFu(){
-        System.out.println(fuService.getAll());
-        return "Fu säger hej";
+    public @ResponseBody Iterable<Fu> getAllFu(){
+        return fuService.getAll();
     }
+
+    @GetMapping(path = "/fu/alls")
+    public @ResponseBody Iterable<FuDTO> getAllFus(){
+        return fuService.getAlls();
+    }
+
 
     @GetMapping(path = "/testing")
     public @ResponseBody String getTest(@PathParam("id") Integer id){
