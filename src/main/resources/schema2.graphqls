@@ -1,5 +1,5 @@
 type Query {
-  arbetsorderByObj(obj: OBJEKT): Book
+  arbetsorderByObj(obj: OBJEKT): Fu
 }
 
 type Fu {
