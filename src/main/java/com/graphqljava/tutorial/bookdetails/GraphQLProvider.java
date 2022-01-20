@@ -29,7 +29,8 @@ public class GraphQLProvider {
 
     @PostConstruct
     public void init() throws IOException {
-        URL url = Resources.getResource("schema.graphqls");
+//        URL url = Resources.getResource("schema.graphqls");
+        URL url = Resources.getResource("schema2.graphqls");
         String sdl = Resources.toString(url, Charsets.UTF_8);
         GraphQLSchema graphQLSchema = buildSchema(sdl);
         this.graphQL = GraphQL.newGraphQL(graphQLSchema).build();
@@ -44,12 +45,15 @@ public class GraphQLProvider {
 
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
+//                .type(newTypeWiring("Query")
+//                        .dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher()))
+//                .type(newTypeWiring("Book")
+//                        .dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher())
+////                        .dataFetcher("pageCount", graphQLDataFetchers.getPageCountDataFetcher())
+//                )
                 .type(newTypeWiring("Query")
-                        .dataFetcher("bookById", graphQLDataFetchers.getBookByIdDataFetcher()))
-                .type(newTypeWiring("Book")
-                        .dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher())
-//                        .dataFetcher("pageCount", graphQLDataFetchers.getPageCountDataFetcher())
-                )
+                        .dataFetcher("fuByObjnr", graphQLDataFetchers.getFuByObjnrDataFetcher()))
+                .type(newTypeWiring("FuDTO"))
                 .build();
     }
 

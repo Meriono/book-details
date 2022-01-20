@@ -2,8 +2,12 @@ package com.graphqljava.tutorial.bookdetails;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.graphqljava.tutorial.bookdetails.f2db.FuDTO;
 import com.graphqljava.tutorial.bookdetails.services.authorService;
 import com.graphqljava.tutorial.bookdetails.services.bookService;
+import com.graphqljava.tutorial.bookdetails.services.fuService;
 import com.graphqljava.tutorial.bookdetails.testdb.Authors;
 import com.graphqljava.tutorial.bookdetails.testdb.Books;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +27,16 @@ public class GraphQLDataFetchers {
     @Autowired
     private authorService authorService2;
 
+    @Autowired
+    private fuService fuService2;
+
     Type type = new TypeToken<Map<String, String>>() {}.getType();
 
     private List<Map<String, String>> getBooks() {
         Iterable<Books> dbBooks = bookService2.getAll();
         List<Map<String, String>> books = new ArrayList<>();
+
+        System.out.println(dbBooks);
 
         dbBooks.forEach((books1 -> {
             Gson gson = new Gson();
@@ -53,6 +62,24 @@ public class GraphQLDataFetchers {
         }));
 
         return author;
+    }
+
+    private List<Map<String, String>> getFus() {
+        Iterable<FuDTO> dbFus = fuService2.getAlls();
+        List<Map<String, String>> fus = new ArrayList<>();
+
+        System.out.println(dbFus);
+
+        dbFus.forEach((fus1 -> {
+            Gson gson = new Gson();
+//            String json = gson.toJson(fus1);
+//            Map<String, String> myMap = gson.fromJson(json, type);
+//
+//            fus.add(myMap);
+
+        }));
+
+        return fus;
     }
 
 //    private static List<Map<String, String>> books = Arrays.asList(
@@ -106,10 +133,22 @@ public class GraphQLDataFetchers {
     }
 // Om Map skulle vara "totalPages" istället för "pageCount" som i schemat behövs nedanstående för att hämta ut korrekt data.
 //
-//    public graphql.schema.DataFetcher getPageCountDataFetcher() {
+//    public DataFetcher getPageCountDataFetcher() {
 //        return dataFetchingEnvironment -> {
 //            Map<String,String> book = dataFetchingEnvironment.getSource();
 //            return book.get("totalPages");
 //        };
 //    }
+
+
+    public DataFetcher getFuByObjnrDataFetcher() {
+        return dataFetchingEnvironment -> {
+            String fuObjnr = dataFetchingEnvironment.getArgument("fuObjnr");
+            return getFus()
+                    .stream()
+                    .filter(fu -> fu.get("fuObjnr").equals(fuObjnr))
+                    .findFirst()
+                    .orElse(null);
+        };
+    }
 }

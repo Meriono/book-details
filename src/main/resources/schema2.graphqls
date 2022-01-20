@@ -1,11 +1,10 @@
 type Query {
-  arbetsorderByObj(obj: OBJEKT): Fu
+  fuByObjnr(fuObjnr: String): FuDTO
 }
 
-type Fu {
-  fuObjnr: OBJEKT
+type FuDTO {
+  fuObjnr: String
   fuStatus: String
   fuRegdat: String
   fuResursext: String
-  Antal: Int
 }
