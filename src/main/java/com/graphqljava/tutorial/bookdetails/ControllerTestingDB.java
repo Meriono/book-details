@@ -1,9 +1,9 @@
 package com.graphqljava.tutorial.bookdetails;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.graphqljava.tutorial.bookdetails.f2db.Fu;
-import com.graphqljava.tutorial.bookdetails.f2db.FuDTO;
-import com.graphqljava.tutorial.bookdetails.services.fuService;
+import com.graphqljava.tutorial.bookdetails.f2db.SmallFuInfo;
 import com.graphqljava.tutorial.bookdetails.testdb.Authors;
 import com.graphqljava.tutorial.bookdetails.testdb.Books;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.websocket.server.PathParam;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/db")
@@ -45,13 +47,20 @@ public class ControllerTestingDB {
 
 
     @GetMapping(path = "/fu/all")
-    public @ResponseBody Iterable<Fu> getAllFu(){
+    public @ResponseBody Iterable<Object[]> getAllFu(){
         return fuService.getAll();
     }
 
     @GetMapping(path = "/fu/alls")
-    public @ResponseBody Iterable<FuDTO> getAllFus(){
-        return fuService.getAlls();
+    public @ResponseBody Iterable<SmallFuInfo> getAllFus(){
+        List<SmallFuInfo> dbSmallFu = new ArrayList<>();
+
+        Iterable<Object[]> o = fuService.getAll();
+
+        o.forEach(objects ->
+                dbSmallFu.add(new SmallFuInfo(objects[0].toString(), objects[1].toString(), objects[2].toString(), objects[3].toString()))
+        );
+        return dbSmallFu;
     }
 
 

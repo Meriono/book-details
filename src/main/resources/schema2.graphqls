@@ -1,10 +1,10 @@
 type Query {
-  fuByObjnr(fuObjnr: String): FuDTO
+  fuByObjnr(objnr: String): [SmallFuInfo]
 }
 
-type FuDTO {
-  fuObjnr: String
-  fuStatus: String
-  fuRegdat: String
-  fuResursext: String
+type SmallFuInfo {
+  objnr: String
+  status: String
+  datum: String
+  utforare: String
 }
