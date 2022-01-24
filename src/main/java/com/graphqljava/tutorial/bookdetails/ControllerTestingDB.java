@@ -65,8 +65,8 @@ public class ControllerTestingDB {
 
 
     @GetMapping(path = "/testing")
-    public @ResponseBody String getTest(@PathParam("id") Integer id){
-        graphQLProvider.printGraphQL(id);
+    public @ResponseBody String getTest(@PathParam("objnr") String objnr){
+        graphQLProvider.printGraphQL(objnr);
         return "hello";
     }
 }

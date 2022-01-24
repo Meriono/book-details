@@ -57,11 +57,12 @@ public class GraphQLProvider {
                 .build();
     }
 
-    public void printGraphQL(Integer id) {
-        ExecutionResult executionResult = graphQL.execute("{bookById(id:"+id+"){book_name author{firstname}}}");
+    public void printGraphQL(String objnr) {
+        ExecutionResult executionResult = graphQL.execute("{fuByObjnr(objnr:\""+objnr+"\"){status datum utforare}}");
 
         System.out.println(executionResult.getData().toString());
     }
+
 
     @Bean
     public GraphQL graphQL() {
