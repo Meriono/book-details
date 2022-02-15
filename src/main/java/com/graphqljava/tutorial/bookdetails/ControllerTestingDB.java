@@ -28,9 +28,6 @@ public class ControllerTestingDB {
 
     @GetMapping(path = "/all")
     public @ResponseBody Iterable<Books> getAllBooks(){
-
-        System.out.println(new Gson().toJson(bookService.getAll()));
-
         return bookService.getAll();
     }
 
