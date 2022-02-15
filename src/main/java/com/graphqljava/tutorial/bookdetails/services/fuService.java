@@ -11,6 +11,5 @@ public class fuService {
     @Autowired
     private com.graphqljava.tutorial.bookdetails.repos.fuRepo fuRepo;
 
-    public Iterable<Object[]> getAll(){ return fuRepo.finding();}
     public Iterable<Object[]> getAllByObjnr(String objnr){ return fuRepo.findAllByFuObjnr(objnr);}
 }

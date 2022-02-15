@@ -11,10 +11,6 @@ import java.sql.ResultSet;
 @Repository
 public interface fuRepo extends JpaRepository<Fu, Long> {
 
-    @Query(value = "select fuStatus, fuRegdat, fuResursext, fuObjnr from Fu where fuObjnr = '01001020003'")
-    Iterable<Object[]> finding();
-    //List<Object[]>}
-
     @Query(value = "select fuStatus, fuRegdat, fuResursext, fuObjnr from Fu where fuObjnr = :objnr")
     Iterable<Object[]> findAllByFuObjnr(String objnr);
 

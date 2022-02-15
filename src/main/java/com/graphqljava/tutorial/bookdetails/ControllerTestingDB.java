@@ -23,14 +23,14 @@ public class ControllerTestingDB {
 
     @GetMapping(path = "/fu/all")
     public @ResponseBody Iterable<Object[]> getAllFu(){
-        return fuService.getAll();
+        return fuService.getAllByObjnr("01001020003");
     }
 
     @GetMapping(path = "/fu/alls")
     public @ResponseBody Iterable<SmallFuInfo> getAllFus(){
         List<SmallFuInfo> dbSmallFu = new ArrayList<>();
 
-        Iterable<Object[]> o = fuService.getAll();
+        Iterable<Object[]> o = fuService.getAllByObjnr("01001020003");
 
         o.forEach(objects ->
                 dbSmallFu.add(new SmallFuInfo(objects[0].toString(), objects[1].toString(), objects[2].toString(), objects[3].toString()))
